@@ -32,10 +32,11 @@ export default function Home() {
 
   const createFileChunk = (file, size = SIZE) => {
     const fileChunkList = [];
-    let cur = 0;
-    while (cur < file.size) {
-      fileChunkList.push({ file: file.slice(cur, cur + size) });
-      cur += size;
+    let currentPosition = 0;
+    while (currentPosition < file.size) {
+      const filePortion = file.slice(currentPosition, currentPosition + size);
+      fileChunkList.push({ file: filePortion });
+      currentPosition += size;
     }
     return fileChunkList;
   };

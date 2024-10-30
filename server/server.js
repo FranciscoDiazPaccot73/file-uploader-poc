@@ -22,6 +22,11 @@ server.on("request", async (req, res) => {
     return;
   }
 
+  if (req.url === "/merge-base") {
+    await controller.mergeAndSaveImages(req, res);
+    return;
+  }
+
   if (req.url === "/") {
     await controller.handleFormData(req, res);
   }
